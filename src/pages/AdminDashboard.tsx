@@ -59,7 +59,7 @@ const AdminDashboard = () => {
         description="Manage portfolio content"
       />
       <div className="min-h-screen bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 pt-[80px] sm:pt-[100px] lg:pt-[130px] pb-8">
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
             <div>
