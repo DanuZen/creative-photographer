@@ -94,7 +94,7 @@ export function HeaderNavigation() {
         {/* User Icon - Right Side */}
         <Link 
           to="/login" 
-          className="p-2 hover:bg-secondary rounded-full transition-colors"
+          className="p-2 hover:bg-secondary rounded-full transition-colors self-start"
           aria-label="Login"
         >
           <User className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors" />
