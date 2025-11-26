@@ -162,7 +162,7 @@ export function AboutPageLayout({ photographer }: AboutPageLayoutProps) {
             <img
               src={photographer.portraitImage.src}
               alt={photographer.portraitImage.alt}
-              className="w-full h-auto rounded-sm shadow-sm"
+              className="w-full aspect-square object-cover rounded-sm shadow-sm"
               loading="eager"
             />
           </div>
