@@ -23,7 +23,8 @@
         "photographerUrl": "https://www.pexels.com/@jacqueline-goncalves-2155137161",
         "pexelsUrl": "https://www.pexels.com/photo/casual-portrait-of-smiling-man-at-outdoor-market-34530201/",
         "series": "documentary"
-      }
+      },
+      "projectUrl": "https://example.com/project-1"
     },
     {
       "id": "documentary-002",
@@ -43,7 +44,8 @@
         "photographerUrl": "https://www.pexels.com/@ebahir",
         "pexelsUrl": "https://www.pexels.com/photo/elderly-man-sitting-in-market-portrait-34519672/",
         "series": "documentary"
-      }
+      },
+      "projectUrl": "https://example.com/project-2"
     },
     {
       "id": "documentary-003",
@@ -63,7 +65,8 @@
         "photographerUrl": "https://www.pexels.com/@yuraforrat",
         "pexelsUrl": "https://www.pexels.com/photo/unrecognizable-person-walking-in-rain-under-umbrella-12327578/",
         "series": "documentary"
-      }
+      },
+      "projectUrl": "https://example.com/project-3"
     },
     {
       "id": "documentary-004",
@@ -83,7 +86,8 @@
         "photographerUrl": "https://www.pexels.com/@vlada-karpovich",
         "pexelsUrl": "https://www.pexels.com/photo/photo-of-woman-wearing-blue-dress-shirt-4668523/",
         "series": "documentary"
-      }
+      },
+      "projectUrl": "https://example.com/project-4"
     },
     {
       "id": "documentary-005",
@@ -103,7 +107,8 @@
         "photographerUrl": "https://www.pexels.com/@luhong",
         "pexelsUrl": "https://www.pexels.com/photo/trendy-young-woman-posing-in-urban-setting-32931765/",
         "series": "documentary"
-      }
+      },
+      "projectUrl": "https://example.com/project-5"
     },
     {
       "id": "documentary-006",
@@ -123,7 +128,8 @@
         "photographerUrl": "https://www.pexels.com/@darina-belonogova",
         "pexelsUrl": "https://www.pexels.com/photo/a-woman-drinking-her-medications-7208641/",
         "series": "documentary"
-      }
+      },
+      "projectUrl": "https://example.com/project-6"
     }
   ]
 }

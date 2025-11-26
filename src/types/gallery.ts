@@ -16,6 +16,7 @@ export interface GalleryImage {
     camera?: string;
     series: string;
   };
+  projectUrl?: string;
 }
 
 export interface PortfolioSeries {

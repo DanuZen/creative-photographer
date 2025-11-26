@@ -9,6 +9,7 @@ export function FilmstripGallery({ images, className = '' }: FilmstripGalleryPro
     src: image.src,
     alt: image.alt,
     code: `${image.metadata.title} - ${image.metadata.year}`,
+    url: image.projectUrl,
   }));
 
   if (images.length === 0) {

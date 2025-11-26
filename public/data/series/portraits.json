@@ -23,7 +23,8 @@
         "photographerUrl": "https://www.pexels.com/@jonathanborba",
         "pexelsUrl": "https://www.pexels.com/photo/portrait-of-a-young-man-smiling-19456424/",
         "series": "portraits"
-      }
+      },
+      "projectUrl": "https://example.com/project-1"
     },
     {
       "id": "portraits-002",
@@ -43,7 +44,8 @@
         "photographerUrl": "https://www.pexels.com/@liza-bakay-134459655",
         "pexelsUrl": "https://www.pexels.com/photo/close-up-shot-of-a-pretty-blonde-haired-woman-smiling-10351047/",
         "series": "portraits"
-      }
+      },
+      "projectUrl": "https://example.com/project-2"
     },
     {
       "id": "portraits-003",
@@ -63,7 +65,8 @@
         "photographerUrl": "https://www.pexels.com/@shvets-production",
         "pexelsUrl": "https://www.pexels.com/photo/close-up-shot-of-a-man-smiling-7191768/",
         "series": "portraits"
-      }
+      },
+      "projectUrl": "https://example.com/project-3"
     },
     {
       "id": "portraits-004",
@@ -83,7 +86,8 @@
         "photographerUrl": "https://www.pexels.com/@melvin-ankrah-37724",
         "pexelsUrl": "https://www.pexels.com/photo/portrait-of-a-laughing-man-16142861/",
         "series": "portraits"
-      }
+      },
+      "projectUrl": "https://example.com/project-4"
     },
     {
       "id": "portraits-005",
@@ -103,7 +107,8 @@
         "photographerUrl": "https://www.pexels.com/@karola-g",
         "pexelsUrl": "https://www.pexels.com/photo/smiling-woman-in-black-framed-eyeglasses-8107290/",
         "series": "portraits"
-      }
+      },
+      "projectUrl": "https://example.com/project-5"
     },
     {
       "id": "portraits-006",
@@ -123,7 +128,8 @@
         "photographerUrl": "https://www.pexels.com/@anton-chubarov-602688651",
         "pexelsUrl": "https://www.pexels.com/photo/a-young-woman-with-blonde-hair-and-blue-eyes-17903171/",
         "series": "portraits"
-      }
+      },
+      "projectUrl": "https://example.com/project-6"
     }
   ]
 }
