@@ -20,34 +20,34 @@ export function AboutPageLayout({ photographer }: AboutPageLayoutProps) {
 
   return (
     <div className="py-8 sm:py-12">
-      <div className="mx-auto max-w-[1200px] relative">
-        {/* Icon Navigation - Left Side */}
-        <div className="hidden lg:block fixed left-4 xl:left-[calc((100vw-1200px)/2-4rem)] top-1/2 -translate-y-1/2 z-10">
-          <nav className="flex flex-col gap-6">
-            {sections.map((section) => (
-              <button
-                key={section.id}
-                onClick={() => setActiveSection(section.id)}
-                className={`group relative p-2 rounded-lg transition-all ${
-                  activeSection === section.id
-                    ? 'bg-accent text-white'
-                    : 'bg-secondary text-muted-foreground hover:bg-accent/20 hover:text-accent'
-                }`}
-                aria-label={section.label}
-              >
-                <section.icon className="w-5 h-5" />
-                <span className="absolute left-full ml-3 px-3 py-1 bg-foreground text-background text-sm rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                  {section.label}
-                </span>
-              </button>
-            ))}
-          </nav>
-        </div>
+      <div className="mx-auto max-w-[1200px]">
+        {/* Three-Column Grid: Icon Nav, Content, Portrait */}
+        <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] gap-6 sm:gap-8 lg:gap-12">
+          {/* Icon Navigation - Static Left Column */}
+          <div className="hidden lg:block">
+            <nav className="flex flex-col gap-6 sticky top-32">
+              {sections.map((section) => (
+                <button
+                  key={section.id}
+                  onClick={() => setActiveSection(section.id)}
+                  className={`group relative p-2 rounded-lg transition-all ${
+                    activeSection === section.id
+                      ? 'bg-accent text-white'
+                      : 'bg-secondary text-muted-foreground hover:bg-accent/20 hover:text-accent'
+                  }`}
+                  aria-label={section.label}
+                >
+                  <section.icon className="w-5 h-5" />
+                  <span className="absolute left-full ml-3 px-3 py-1 bg-foreground text-background text-sm rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                    {section.label}
+                  </span>
+                </button>
+              ))}
+            </nav>
+          </div>
 
-        {/* Two-Column Grid: 60% content, 40% portrait */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12">
-          {/* Left Column - Biography & Content (60% = 3/5) */}
-          <div className="lg:col-span-3 flex flex-col min-h-[500px]">
+          {/* Middle Column - Biography & Content */}
+          <div className="flex flex-col min-h-[500px] max-w-[700px]">
             {/* Philosophy Section */}
             {activeSection === 'philosophy' && (
               <section className="animate-in fade-in duration-300">
@@ -157,12 +157,12 @@ export function AboutPageLayout({ photographer }: AboutPageLayoutProps) {
             )}
           </div>
 
-          {/* Right Column - Professional Portrait (40% = 2/5) */}
-          <div className="lg:col-span-2">
+          {/* Right Column - Professional Portrait */}
+          <div className="lg:sticky lg:top-32 lg:self-start">
             <img
               src={photographer.portraitImage.src}
               alt={photographer.portraitImage.alt}
-              className="w-full aspect-square object-cover rounded-sm shadow-sm"
+              className="w-full aspect-square object-cover rounded-sm shadow-sm max-w-[400px]"
               loading="eager"
             />
           </div>
