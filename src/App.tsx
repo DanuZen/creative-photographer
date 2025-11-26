@@ -12,6 +12,8 @@ import { GallerySkeleton } from "@/components/gallery/GallerySkeleton";
 const Home = lazy(() => import("./pages/Home"));
 const SeriesPage = lazy(() => import("./pages/SeriesPage"));
 const About = lazy(() => import("./pages/About"));
+const Login = lazy(() => import("./pages/Login"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -37,6 +39,8 @@ const App = () => (
               <Route path="/" element={<Home />} />
               <Route path="/series/:slug" element={<SeriesPage />} />
               <Route path="/about" element={<About />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/admin" element={<AdminDashboard />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
