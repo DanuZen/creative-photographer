@@ -19,13 +19,13 @@ export function AboutPageLayout({ photographer }: AboutPageLayoutProps) {
   ];
 
   return (
-    <div className="py-8 sm:py-12">
-      <div className="mx-auto max-w-[1200px]">
+    <div className="py-8 sm:py-12 min-h-screen">
+      <div className="mx-auto max-w-[1200px] px-4">
         {/* Three-Column Grid: Icon Nav, Content, Portrait */}
         <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] gap-6 sm:gap-8 lg:gap-12">
           {/* Icon Navigation - Static Left Column */}
           <div className="hidden lg:block">
-            <nav className="flex flex-col gap-6 sticky top-32">
+            <nav className="flex flex-col gap-6">
               {sections.map((section) => (
                 <button
                   key={section.id}
@@ -47,7 +47,7 @@ export function AboutPageLayout({ photographer }: AboutPageLayoutProps) {
           </div>
 
           {/* Middle Column - Biography & Content */}
-          <div className="flex flex-col min-h-[500px] max-w-[700px]">
+          <div className="flex flex-col max-w-[700px]">
             {/* Philosophy Section */}
             {activeSection === 'philosophy' && (
               <section className="animate-in fade-in duration-300">
@@ -158,11 +158,11 @@ export function AboutPageLayout({ photographer }: AboutPageLayoutProps) {
           </div>
 
           {/* Right Column - Professional Portrait */}
-          <div className="lg:sticky lg:top-32 lg:self-start">
+          <div className="lg:self-start">
             <img
               src={photographer.portraitImage.src}
               alt={photographer.portraitImage.alt}
-              className="w-full aspect-square object-cover rounded-sm shadow-sm max-w-[400px]"
+              className="w-full aspect-square object-cover rounded-sm shadow-sm max-w-[400px] mx-auto"
               loading="eager"
             />
           </div>
