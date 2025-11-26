@@ -1,21 +1,84 @@
 import { PhotographerProfile } from '@/types/photographer';
-import { Mail, Phone } from 'lucide-react';
+import { Mail, Phone, Lightbulb, User, Briefcase, Target, Users, MessageCircle } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 interface AboutPageLayoutProps {
   photographer: PhotographerProfile;
 }
 
 export function AboutPageLayout({ photographer }: AboutPageLayoutProps) {
+  const [activeSection, setActiveSection] = useState('philosophy');
+
+  const sections = [
+    { id: 'philosophy', label: 'Philosophy', icon: Lightbulb },
+    { id: 'background', label: 'Background', icon: User },
+    { id: 'experience', label: 'Experience', icon: Briefcase },
+    { id: 'current-focus', label: 'Current Focus', icon: Target },
+    { id: 'clients', label: 'Clients', icon: Users },
+    { id: 'contact', label: 'Contact', icon: MessageCircle },
+  ];
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setActiveSection(sectionId);
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 200;
+      
+      for (const section of sections) {
+        const element = document.getElementById(section.id);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section.id);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="py-8 sm:py-12">
-      <div className="mx-auto max-w-[1200px]">
+      <div className="mx-auto max-w-[1200px] relative">
+        {/* Icon Navigation - Left Side */}
+        <div className="hidden lg:block fixed left-4 xl:left-[calc((100vw-1200px)/2-4rem)] top-1/2 -translate-y-1/2 z-10">
+          <nav className="flex flex-col gap-6">
+            {sections.map((section) => (
+              <button
+                key={section.id}
+                onClick={() => scrollToSection(section.id)}
+                className={`group relative p-2 rounded-lg transition-all ${
+                  activeSection === section.id
+                    ? 'bg-accent text-white'
+                    : 'bg-secondary text-muted-foreground hover:bg-accent/20 hover:text-accent'
+                }`}
+                aria-label={section.label}
+              >
+                <section.icon className="w-5 h-5" />
+                <span className="absolute left-full ml-3 px-3 py-1 bg-foreground text-background text-sm rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  {section.label}
+                </span>
+              </button>
+            ))}
+          </nav>
+        </div>
+
         {/* Two-Column Grid: 60% content, 40% portrait */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12">
           {/* Left Column - Biography & Content (60% = 3/5) */}
           <div className="lg:col-span-3 flex flex-col">
             <div className="space-y-8 sm:space-y-12">
             {/* Philosophy Section */}
-            <section>
+            <section id="philosophy">
               <h2 className="text-lg sm:text-xl lg:text-[1.75rem] leading-tight font-serif font-bold text-foreground mb-4 sm:mb-6">
                 Philosophy
               </h2>
@@ -25,7 +88,7 @@ export function AboutPageLayout({ photographer }: AboutPageLayoutProps) {
             </section>
 
             {/* Background Section */}
-            <section>
+            <section id="background">
               <h2 className="text-lg sm:text-xl lg:text-[1.75rem] leading-tight font-serif font-bold text-foreground mb-4 sm:mb-6">
                 Background
               </h2>
@@ -35,7 +98,7 @@ export function AboutPageLayout({ photographer }: AboutPageLayoutProps) {
             </section>
 
             {/* Experience Section */}
-            <section>
+            <section id="experience">
               <h2 className="text-lg sm:text-xl lg:text-[1.75rem] leading-tight font-serif font-bold text-foreground mb-4 sm:mb-6">
                 Experience
               </h2>
@@ -45,7 +108,7 @@ export function AboutPageLayout({ photographer }: AboutPageLayoutProps) {
             </section>
 
             {/* Current Focus Section */}
-            <section>
+            <section id="current-focus">
               <h2 className="text-lg sm:text-xl lg:text-[1.75rem] leading-tight font-serif font-bold text-foreground mb-4 sm:mb-6">
                 Current Focus
               </h2>
@@ -55,7 +118,7 @@ export function AboutPageLayout({ photographer }: AboutPageLayoutProps) {
             </section>
 
             {/* Client List Section */}
-            <section>
+            <section id="clients">
               <h2 className="text-lg sm:text-xl lg:text-[1.75rem] leading-tight font-serif font-bold text-foreground mb-6 sm:mb-8">
                 Select Clients
               </h2>
@@ -82,7 +145,7 @@ export function AboutPageLayout({ photographer }: AboutPageLayoutProps) {
             </div>
 
             {/* Contact Information Section */}
-            <section className="border-t border-gray-200 pt-6 sm:pt-8 mt-auto">
+            <section id="contact" className="border-t border-gray-200 pt-6 sm:pt-8 mt-auto">
               <h2 className="text-lg sm:text-xl lg:text-[1.75rem] leading-tight font-serif font-bold text-foreground mb-4 sm:mb-6">
                 Get in Touch
               </h2>
