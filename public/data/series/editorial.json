@@ -23,7 +23,8 @@
         "photographerUrl": "https://www.pexels.com/@alipazani",
         "pexelsUrl": "https://www.pexels.com/photo/portrait-photo-of-woman-wearing-flower-crown-2921424/",
         "series": "editorial"
-      }
+      },
+      "projectUrl": "https://example.com/project-1"
     },
     {
       "id": "editorial-002",
@@ -43,7 +44,8 @@
         "photographerUrl": "https://www.pexels.com/@tochukwu-ekeh-2149052634",
         "pexelsUrl": "https://www.pexels.com/photo/elegant-portrait-of-a-young-woman-with-braided-hair-32160350/",
         "series": "editorial"
-      }
+      },
+      "projectUrl": "https://example.com/project-2"
     },
     {
       "id": "editorial-003",
@@ -63,7 +65,8 @@
         "photographerUrl": "https://www.pexels.com/@a-darmel",
         "pexelsUrl": "https://www.pexels.com/photo/portrait-of-a-woman-with-red-hair-holding-a-laptop-7707306/",
         "series": "editorial"
-      }
+      },
+      "projectUrl": "https://example.com/project-3"
     },
     {
       "id": "editorial-004",
@@ -83,7 +86,8 @@
         "photographerUrl": "https://www.pexels.com/@rccbtn",
         "pexelsUrl": "https://www.pexels.com/photo/confident-woman-in-business-suit-reaching-out-31497540/",
         "series": "editorial"
-      }
+      },
+      "projectUrl": "https://example.com/project-4"
     },
     {
       "id": "editorial-005",
@@ -103,7 +107,8 @@
         "photographerUrl": "https://www.pexels.com/@darina-belonogova",
         "pexelsUrl": "https://www.pexels.com/photo/portrait-of-woman-in-red-tank-top-7897377/",
         "series": "editorial"
-      }
+      },
+      "projectUrl": "https://example.com/project-5"
     },
     {
       "id": "editorial-006",
@@ -123,7 +128,8 @@
         "photographerUrl": "https://www.pexels.com/@beatriz-fernandes-3765504",
         "pexelsUrl": "https://www.pexels.com/photo/smiling-woman-in-black-blazer-11052798/",
         "series": "editorial"
-      }
+      },
+      "projectUrl": "https://example.com/project-6"
     }
   ]
 }

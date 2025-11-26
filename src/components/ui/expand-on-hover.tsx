@@ -46,7 +46,7 @@ const HoverExpand_001 = ({
   images,
   className,
 }: {
-  images: { src: string; alt: string; code: string }[];
+  images: { src: string; alt: string; code: string; url?: string }[];
   className?: string;
 }) => {
   const [activeImage, setActiveImage] = useState<number | null>(1);
@@ -106,9 +106,15 @@ const HoverExpand_001 = ({
               initial={{ opacity: 0, translateY: 10 }}
               animate={{ opacity: 1, translateY: 0 }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="relative w-full overflow-hidden rounded-2xl"
+              className="relative w-full overflow-hidden rounded-2xl cursor-pointer"
               style={{ height: config.height }}
-              onClick={() => setActiveImage(index)}
+              onClick={() => {
+                if (image.url) {
+                  window.open(image.url, '_blank', 'noopener,noreferrer');
+                } else {
+                  setActiveImage(index);
+                }
+              }}
             >
               <img src={image.src} className="size-full object-cover" alt={image.alt} />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
@@ -152,14 +158,18 @@ const HoverExpand_001 = ({
 
             const initialWidth = "expandedWidth" in config ? config.collapsedWidth : `${config.collapsedPercent}%`;
 
-            return (
+              return (
               <motion.div
                 key={index}
                 className="relative cursor-pointer overflow-hidden rounded-3xl"
                 initial={{ width: initialWidth, height: "20rem" }}
                 animate={{ width, height: config.height }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                onClick={() => setActiveImage(index)}
+                onClick={() => {
+                  if (image.url) {
+                    window.open(image.url, '_blank', 'noopener,noreferrer');
+                  }
+                }}
                 onHoverStart={() => setActiveImage(index)}
               >
                 <AnimatePresence>
