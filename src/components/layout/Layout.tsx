@@ -11,7 +11,7 @@ export function Layout({ children, fullPage = false }: LayoutProps) {
   if (fullPage) {
     return (
       <div
-        className="grid w-screen min-h-screen items-start mt-[80px] sm:mt-[100px] lg:mt-[130px] layout-full-page"
+        className="grid w-screen min-h-screen items-start pt-[80px] sm:pt-[100px] md:pt-0 layout-full-page"
         style={{
           gridTemplateRows: "1fr auto 0",
           overscrollBehavior: "contain",
