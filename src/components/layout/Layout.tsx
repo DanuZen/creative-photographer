@@ -11,7 +11,7 @@ export function Layout({ children, fullPage = false }: LayoutProps) {
   if (fullPage) {
     return (
       <div
-        className="grid w-screen min-h-screen items-start pt-[80px] sm:pt-[100px] md:pt-0 layout-full-page"
+        className="grid w-screen min-h-screen items-start layout-full-page"
         style={{
           gridTemplateRows: "1fr auto 0",
           overscrollBehavior: "contain",
@@ -34,7 +34,7 @@ export function Layout({ children, fullPage = false }: LayoutProps) {
         `}</style>
         {/* Content in same grid row as Home - natural page scroll */}
         <div
-          className="flex flex-col gap-6 sm:gap-8 lg:gap-[50px]"
+          className="flex flex-col gap-6 sm:gap-8 lg:gap-[50px] pt-[80px] sm:pt-[100px] md:pt-[130px]"
           style={{
             gridColumn: "content-start / content-end",
             gridRow: "2",
