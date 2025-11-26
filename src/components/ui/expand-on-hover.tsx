@@ -161,8 +161,8 @@ const HoverExpand_001 = ({
               return (
               <motion.div
                 key={index}
-                className="relative cursor-pointer overflow-hidden rounded-3xl"
-                initial={{ width: initialWidth, height: "20rem" }}
+                className="relative cursor-pointer overflow-hidden rounded-3xl bg-muted"
+                initial={{ width: initialWidth, height: config.height }}
                 animate={{ width, height: config.height }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
                 onClick={() => {
