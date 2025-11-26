@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu } from "lucide-react";
+import { Menu, User } from "lucide-react";
 import { usePortfolio } from "@/context/PortfolioContext";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 export function HeaderNavigation() {
@@ -90,8 +90,15 @@ export function HeaderNavigation() {
             </ul>
           </nav>
         </div>
-        {/* Contact Info - Tablet/Desktop Only */}
         
+        {/* User Icon - Right Side */}
+        <Link 
+          to="/login" 
+          className="p-2 hover:bg-secondary rounded-full transition-colors"
+          aria-label="Login"
+        >
+          <User className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors" />
+        </Link>
       </div>
 
       {/* Bottom Row: Navigation */}
