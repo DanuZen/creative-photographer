@@ -21,7 +21,6 @@ export function HeaderNavigation() {
   const handleNavClick = () => {
     setIsMenuOpen(false);
   };
-  
   return <div className="relative w-full">
       {/* Top Row: Name + Contact Info */}
       <div className="flex items-end justify-between mb-2">
