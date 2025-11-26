@@ -59,8 +59,8 @@ const AdminDashboard = () => {
         title="Admin Dashboard"
         description="Manage portfolio content"
       />
-      <Layout>
-        <div className="min-h-screen px-4 sm:px-8 lg:px-12 py-8">
+      <Layout fullPage={true}>
+        <div className="px-4 sm:px-8 lg:px-12 py-8">
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
             <div>
