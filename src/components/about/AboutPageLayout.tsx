@@ -47,7 +47,7 @@ export function AboutPageLayout({ photographer }: AboutPageLayoutProps) {
           </div>
 
           {/* Middle Column - Biography & Content */}
-          <div className="flex flex-col max-w-[700px]">
+          <div className="flex flex-col max-w-[700px] min-h-[600px]">
             {/* Philosophy Section */}
             {activeSection === 'philosophy' && (
               <section className="animate-in fade-in duration-300">
