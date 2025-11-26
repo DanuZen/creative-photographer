@@ -22,10 +22,7 @@ export function HeaderNavigation() {
     setIsMenuOpen(false);
   };
   
-  // Check if we're on admin or login pages
-  const isAdminOrLogin = location.pathname.startsWith('/admin') || location.pathname === '/login';
-
-  return <div className={`w-full ${isAdminOrLogin ? 'relative' : 'absolute top-0 left-0 right-0 z-50 px-4 sm:px-8 lg:px-12 pt-8'}`}>
+  return <div className="relative w-full">
       {/* Top Row: Name + Contact Info */}
       <div className="flex items-end justify-between mb-2">
         <div className="flex justify-between md:justify-start w-full md:w-fit md:flex-col gap-4">
