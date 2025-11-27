@@ -7,92 +7,58 @@ interface LayoutProps {
 }
 
 export function Layout({ children, fullPage = false }: LayoutProps) {
-  // Full page scroll layout (for About and other content pages) - Same grid, scrollable
+  // Full page scroll layout (for About and other content pages)
   if (fullPage) {
     return (
-      <div
-        className="grid w-screen min-h-screen items-start layout-full-page"
-        style={{
-          gridTemplateRows: "1fr auto 0",
-          overscrollBehavior: "contain",
-          scrollbarGutter: "stable",
-        }}
-      >
-        <style>{`
-          .layout-full-page {
-            grid-template-columns: [full-start] 1rem [content-start] 1fr [content-end] 1rem [full-end];
-          }
-          @media (min-width: 768px) {
-            .layout-full-page {
-              grid-template-columns: [full-start] 2.5rem [content-start] 1fr [content-end] 2.5rem [full-end];
-            }
-          }
-          @media (min-width: 1024px) {
-            .layout-full-page {
-              grid-template-columns: [full-start] 1fr [content-start] min(1200px, 100%) [content-end] 1fr [full-end];
-            }
-          }
-        `}</style>
-        {/* Content in same grid row as Home - natural page scroll */}
-        <div
-          className="flex flex-col pt-[120px] sm:pt-[130px] md:pt-[140px]"
-          style={{
-            gridColumn: "content-start / content-end",
-            gridRow: "2",
-          }}
-        >
-          <header className="flex-shrink-0 flex justify-center">
-            <HeaderNavigation />
-          </header>
-          <main className="flex-shrink-0">{children}</main>
+      <>
+        <HeaderNavigation />
+        <div className="w-full min-h-screen pt-[120px] sm:pt-[130px] md:pt-[140px]">
+          <div className="mx-auto px-4 sm:px-10 lg:max-w-[1200px] lg:px-0">
+            <main>{children}</main>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
   // Grid centered layout (for Home gallery)
   return (
-    <div
-      className="grid w-screen min-h-screen overflow-y-auto md:h-screen md:max-h-screen md:overflow-hidden items-start md:items-center layout-home"
-      style={{
-        gridTemplateRows: "auto 1fr",
-        overscrollBehavior: "contain",
-        scrollbarGutter: "stable",
-      }}
-    >
-      <style>{`
-        .layout-home {
-          grid-template-columns: [full-start] 1rem [content-start] 1fr [content-end] 1rem [full-end];
-        }
-        @media (min-width: 768px) {
-          .layout-home {
-            grid-template-columns: [full-start] 2.5rem [content-start] 1fr [content-end] 2.5rem [full-end];
-            grid-template-rows: 1fr minmax(500px, calc(100vh - 200px)) 1fr;
-          }
-        }
-        @media (min-width: 1024px) {
-          .layout-home {
-            grid-template-columns: [full-start] 1fr [content-start] min(1200px, 100%) [content-end] 1fr [full-end];
-            grid-template-rows: 1fr min(740px, calc(100vh - 260px)) 1fr;
-          }
-        }
-      `}</style>
-      {/* Centered container for header + gallery */}
+    <>
+      <HeaderNavigation />
       <div
-        className="flex flex-col pointer-events-auto pt-[120px] sm:pt-[130px] md:pt-[140px]"
+        className="grid w-screen min-h-screen overflow-y-auto md:h-screen md:max-h-screen md:overflow-hidden items-start md:items-center layout-home"
         style={{
-          gridColumn: "content-start / content-end",
-          gridRow: "2",
+          gridTemplateRows: "auto 1fr",
+          overscrollBehavior: "contain",
         }}
       >
-        {/* Header: Minimal height */}
-        <header className="flex-shrink-0 flex justify-center">
-          <HeaderNavigation />
-        </header>
-
-        {/* Main Content: Gallery */}
-        <main className="flex-shrink-0">{children}</main>
+        <style>{`
+          .layout-home {
+            grid-template-columns: [full-start] 1rem [content-start] 1fr [content-end] 1rem [full-end];
+          }
+          @media (min-width: 768px) {
+            .layout-home {
+              grid-template-columns: [full-start] 2.5rem [content-start] 1fr [content-end] 2.5rem [full-end];
+              grid-template-rows: 1fr minmax(500px, calc(100vh - 200px)) 1fr;
+            }
+          }
+          @media (min-width: 1024px) {
+            .layout-home {
+              grid-template-columns: [full-start] 1fr [content-start] min(1200px, 100%) [content-end] 1fr [full-end];
+              grid-template-rows: 1fr min(740px, calc(100vh - 260px)) 1fr;
+            }
+          }
+        `}</style>
+        <div
+          className="flex flex-col pointer-events-auto pt-[120px] sm:pt-[130px] md:pt-[140px]"
+          style={{
+            gridColumn: "content-start / content-end",
+            gridRow: "2",
+          }}
+        >
+          <main className="flex-shrink-0">{children}</main>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
