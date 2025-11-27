@@ -58,7 +58,7 @@ export default function About() {
   }
 
   return (
-    <Layout fullPage>
+    <Layout>
       <SEO
         title={`About ${photographer.name} - Portrait Photographer`}
         description={photographer.tagline}
