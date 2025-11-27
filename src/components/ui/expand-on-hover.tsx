@@ -81,12 +81,12 @@ const HoverExpand_001 = ({
     desktop: {
       layout: "horizontal" as const,
       numVisible: 6,
-      expandedWidth: "27.65625rem", // 442px - original fixed size
-      collapsedWidth: "9.21875rem", // 147px - original fixed size
+      expandedWidth: "32rem", // Lebih lebar untuk expanded
+      collapsedWidth: "10.5rem", // Lebih lebar untuk collapsed
       height: "min(36.875rem, 60vh)",
       gap: "gap-5",
       padding: "px-0",
-      maxWidth: "max-w-[1200px]",
+      maxWidth: "max-w-[1600px]", // Lebar maksimal diperbesar
     },
   }[breakpoint];
 

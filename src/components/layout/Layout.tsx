@@ -34,7 +34,7 @@ export function Layout({ children, fullPage = false }: LayoutProps) {
         `}</style>
         {/* Content in same grid row as Home - natural page scroll */}
         <div
-          className="flex flex-col gap-6 sm:gap-8 lg:gap-[50px] pt-[140px] sm:pt-[160px] md:pt-[180px]"
+          className="flex flex-col gap-4 sm:gap-6 lg:gap-8 pt-[120px] sm:pt-[130px] md:pt-[140px]"
           style={{
             gridColumn: "content-start / content-end",
             gridRow: "2",
@@ -77,7 +77,7 @@ export function Layout({ children, fullPage = false }: LayoutProps) {
       `}</style>
       {/* Centered container for header + gallery */}
       <div
-        className="flex flex-col gap-6 sm:gap-8 lg:gap-[50px] pointer-events-auto pt-[140px] sm:pt-[160px] md:pt-[180px]"
+        className="flex flex-col gap-4 sm:gap-6 lg:gap-8 pointer-events-auto pt-[120px] sm:pt-[130px] md:pt-[140px]"
         style={{
           gridColumn: "content-start / content-end",
           gridRow: "2",
