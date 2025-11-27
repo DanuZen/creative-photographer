@@ -46,7 +46,7 @@ export function AboutPageLayout({
           </div>
 
           {/* Middle Column - Biography & Content */}
-          <div className="flex flex-col max-w-[700px] min-h-[400px]">
+          <div className="relative flex flex-col max-w-[700px] h-[400px]">
             {/* Philosophy Section */}
             {activeSection === 'philosophy' && <section className="animate-in fade-in duration-300 absolute max-w-[700px]">
                 <h2 className="text-lg lg:text-xl leading-tight font-serif font-bold text-foreground mb-3">
