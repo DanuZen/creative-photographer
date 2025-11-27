@@ -46,9 +46,9 @@ export function AboutPageLayout({
           </div>
 
           {/* Middle Column - Biography & Content */}
-          <div className="flex flex-col max-w-[700px]">
+          <div className="flex flex-col max-w-[700px] min-h-[400px]">
             {/* Philosophy Section */}
-            {activeSection === 'philosophy' && <section className="animate-in fade-in duration-300">
+            {activeSection === 'philosophy' && <section className="animate-in fade-in duration-300 absolute max-w-[700px]">
                 <h2 className="text-lg lg:text-xl leading-tight font-serif font-bold text-foreground mb-3">
                   Philosophy
                 </h2>
@@ -58,7 +58,7 @@ export function AboutPageLayout({
               </section>}
 
             {/* Background Section */}
-            {activeSection === 'background' && <section className="animate-in fade-in duration-300">
+            {activeSection === 'background' && <section className="animate-in fade-in duration-300 absolute max-w-[700px]">
                 <h2 className="text-lg lg:text-xl leading-tight font-serif font-bold text-foreground mb-3">
                   Background
                 </h2>
@@ -68,7 +68,7 @@ export function AboutPageLayout({
               </section>}
 
             {/* Experience Section */}
-            {activeSection === 'experience' && <section className="animate-in fade-in duration-300">
+            {activeSection === 'experience' && <section className="animate-in fade-in duration-300 absolute max-w-[700px]">
                 <h2 className="text-lg lg:text-xl leading-tight font-serif font-bold text-foreground mb-3">
                   Experience
                 </h2>
@@ -78,7 +78,7 @@ export function AboutPageLayout({
               </section>}
 
             {/* Current Focus Section */}
-            {activeSection === 'current-focus' && <section className="animate-in fade-in duration-300">
+            {activeSection === 'current-focus' && <section className="animate-in fade-in duration-300 absolute max-w-[700px]">
                 <h2 className="text-lg lg:text-xl leading-tight font-serif font-bold text-foreground mb-3">
                   Current Focus
                 </h2>
@@ -88,7 +88,7 @@ export function AboutPageLayout({
               </section>}
 
             {/* Contact Information Section */}
-            {activeSection === 'contact' && <section className="animate-in fade-in duration-300">
+            {activeSection === 'contact' && <section className="animate-in fade-in duration-300 absolute max-w-[700px]">
                 <h2 className="text-lg lg:text-xl leading-tight font-serif font-bold text-foreground mb-3">
                   Get in Touch
                 </h2>
