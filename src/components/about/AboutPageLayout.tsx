@@ -1,5 +1,5 @@
 import { PhotographerProfile } from '@/types/photographer';
-import { Mail, Phone, Lightbulb, User, Briefcase, Target, Users, MessageCircle } from 'lucide-react';
+import { Mail, Phone, Lightbulb, User, Briefcase, Target, MessageCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 interface AboutPageLayoutProps {
   photographer: PhotographerProfile;
@@ -24,10 +24,6 @@ export function AboutPageLayout({
     id: 'current-focus',
     label: 'Current Focus',
     icon: Target
-  }, {
-    id: 'clients',
-    label: 'Clients',
-    icon: Users
   }, {
     id: 'contact',
     label: 'Contact',
@@ -89,23 +85,6 @@ export function AboutPageLayout({
                 <p className="text-sm sm:text-base lg:text-[1.0625rem] leading-relaxed text-gray-700">
                   {photographer.biography.currentFocus}
                 </p>
-              </section>}
-
-            {/* Client List Section */}
-            {activeSection === 'clients' && <section className="animate-in fade-in duration-300">
-                <h2 className="text-lg sm:text-xl lg:text-[1.75rem] leading-tight font-serif font-bold text-foreground mb-6 sm:mb-8">
-                  Select Clients
-                </h2>
-                <div className="space-y-6 sm:space-y-8">
-                  {photographer.clients.map((clientCategory, index) => <div key={index}>
-                      <h3 className="text-base sm:text-lg lg:text-[1.375rem] leading-tight font-semibold text-foreground mb-3 sm:mb-4">
-                        {clientCategory.category}
-                      </h3>
-                      <ul className="space-y-2">
-                        {clientCategory.clients.map((client, clientIndex) => {})}
-                      </ul>
-                    </div>)}
-                </div>
               </section>}
 
             {/* Contact Information Section */}
