@@ -22,7 +22,7 @@ export function HeaderNavigation() {
     setIsMenuOpen(false);
   };
   return <div className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm">
-      <div className="mx-auto px-4 sm:px-10 lg:max-w-[1200px] lg:px-0 pt-6 sm:pt-8 lg:pt-10 pb-4">
+      <div className="mx-auto px-4 md:px-10 lg:max-w-[1200px] lg:px-0 pt-6 sm:pt-8 lg:pt-10 pb-4">
         {/* Top Row: Name + Contact Info */}
         <div className="flex items-end justify-between mb-2">
         <div className="flex justify-between md:justify-start w-full md:w-fit md:flex-col gap-4">
