@@ -15,6 +15,7 @@ export function Layout({ children, fullPage = false }: LayoutProps) {
         style={{
           gridTemplateRows: "1fr auto 0",
           overscrollBehavior: "contain",
+          scrollbarGutter: "stable",
         }}
       >
         <style>{`
@@ -56,6 +57,7 @@ export function Layout({ children, fullPage = false }: LayoutProps) {
       style={{
         gridTemplateRows: "auto 1fr",
         overscrollBehavior: "contain",
+        scrollbarGutter: "stable",
       }}
     >
       <style>{`
