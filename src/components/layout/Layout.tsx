@@ -50,7 +50,7 @@ export function Layout({ children, fullPage = false }: LayoutProps) {
           }
         `}</style>
         <div
-          className="flex flex-col pointer-events-auto pt-[120px] sm:pt-[130px] md:pt-[140px]"
+          className="flex flex-col pointer-events-auto"
           style={{
             gridColumn: "content-start / content-end",
             gridRow: "2",
