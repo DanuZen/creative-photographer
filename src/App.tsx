@@ -13,6 +13,7 @@ const Home = lazy(() => import("./pages/Home"));
 const SeriesPage = lazy(() => import("./pages/SeriesPage"));
 const About = lazy(() => import("./pages/About"));
 const Login = lazy(() => import("./pages/Login"));
+const Skills = lazy(() => import("./pages/Skills"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -38,6 +39,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/series/:slug" element={<SeriesPage />} />
+              <Route path="/skills" element={<Skills />} />
               <Route path="/about" element={<About />} />
               <Route path="/login" element={<Login />} />
               <Route path="/admin" element={<AdminDashboard />} />

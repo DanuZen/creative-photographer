@@ -1,23 +1,23 @@
 import { Layout } from "@/components/layout/Layout";
-import { usePortfolio } from "@/context/PortfolioContext";
+import { useProfile } from "@/context/PortfolioContext";
 import { FilmstripGallery } from "@/components/gallery/FilmstripGallery";
 import { GallerySkeleton } from "@/components/gallery/GallerySkeleton";
 import { SEO } from "@/components/seo/SEO";
 import { useEffect } from "react";
 
 export default function Home() {
-  const { series, photographer, loading, error } = usePortfolio();
+  const { projects, user, loading, error } = useProfile();
 
-  const featuredSeries = series.find((s) => s.featured) || series[0];
+  const featuredProject = projects.find((p) => p.featured) || projects[0];
 
-  const seoTitle = featuredSeries
-    ? `${featuredSeries.title} - ${photographer?.name || "Portrait Photographer"}`
-    : photographer?.name || "Portrait Photographer Portfolio";
+  const seoTitle = featuredProject
+    ? `${featuredProject.title} - ${user?.name || "Developer Portfolio"}`
+    : user?.name || "Developer Portfolio";
 
   const seoDescription =
-    featuredSeries?.description ||
-    photographer?.tagline ||
-    "Professional portrait photography portfolio featuring documentary, editorial, and commercial work.";
+    featuredProject?.description ||
+    user?.tagline ||
+    "Professional developer portfolio featuring web development, design, and engineering projects.";
 
   // Set page title and preload critical resources
   useEffect(() => {
@@ -67,12 +67,12 @@ export default function Home() {
     );
   }
 
-  if (!featuredSeries) {
+  if (!featuredProject) {
     return (
       <Layout>
-        <SEO title="No Series" description="No portfolio series available" />
+        <SEO title="No Projects" description="No portfolio projects available" />
         <div className="flex items-center justify-center h-full">
-          <p className="text-muted-foreground">No portfolio series available</p>
+          <p className="text-muted-foreground">No portfolio projects available</p>
         </div>
       </Layout>
     );
@@ -80,9 +80,9 @@ export default function Home() {
 
   return (
     <Layout>
-      <SEO title={seoTitle} description={seoDescription} image={featuredSeries.images[0]?.src} type="website" />
+      <SEO title={seoTitle} description={seoDescription} image={featuredProject.images[0]?.src} type="website" />
       <div className="h-full flex items-center justify-center">
-        <FilmstripGallery images={featuredSeries.images} />
+        <FilmstripGallery images={featuredProject.images} />
       </div>
     </Layout>
   );

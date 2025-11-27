@@ -1,119 +1,168 @@
-import { PhotographerProfile } from '@/types/photographer';
+import { UserProfile } from '@/types/photographer';
 import { Mail, Phone, Lightbulb, User, Briefcase, Target, MessageCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 interface AboutPageLayoutProps {
-  photographer: PhotographerProfile;
+  photographer: UserProfile;
 }
-export function AboutPageLayout({
-  photographer
-}: AboutPageLayoutProps) {
+export function AboutPageLayout({ photographer }: AboutPageLayoutProps) {
   const [activeSection, setActiveSection] = useState('philosophy');
-  const sections = [{
-    id: 'philosophy',
-    label: 'Philosophy',
-    icon: Lightbulb
-  }, {
-    id: 'background',
-    label: 'Background',
-    icon: User
-  }, {
-    id: 'experience',
-    label: 'Experience',
-    icon: Briefcase
-  }, {
-    id: 'current-focus',
-    label: 'Current Focus',
-    icon: Target
-  }, {
-    id: 'contact',
-    label: 'Contact',
-    icon: MessageCircle
-  }];
-  return <div className="w-full max-w-[1200px] mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] gap-6 lg:gap-8 items-center">
-        {/* Icon Navigation - Static Left Column */}
-        <div className="hidden lg:block">
-          <nav className="flex flex-col gap-3">
-            {sections.map(section => <button key={section.id} onClick={() => setActiveSection(section.id)} className={`group relative p-2 rounded-lg transition-all ${activeSection === section.id ? 'bg-accent text-white' : 'bg-secondary text-muted-foreground hover:bg-accent/20 hover:text-accent'}`} aria-label={section.label}>
+  const sections = [
+    {
+      id: 'philosophy',
+      label: 'Philosophy',
+      icon: Lightbulb,
+    },
+    {
+      id: 'background',
+      label: 'Background',
+      icon: User,
+    },
+    {
+      id: 'experience',
+      label: 'Experience',
+      icon: Briefcase,
+    },
+    {
+      id: 'current-focus',
+      label: 'Current Focus',
+      icon: Target,
+    },
+    {
+      id: 'contact',
+      label: 'Contact',
+      icon: MessageCircle,
+    },
+  ];
+  return (
+    <div className="w-full h-full flex flex-col justify-center">
+      <div className="grid grid-cols-1 lg:grid-cols-[400px_auto_1fr] gap-8 lg:gap-16 items-start">
+        
+        {/* Left Column - Professional Portrait */}
+        <div className="w-full max-w-[400px] mx-auto lg:mx-0">
+          <img 
+            src={photographer.portraitImage.src} 
+            alt={photographer.portraitImage.alt} 
+            className="w-full aspect-[3/4] object-cover rounded-3xl shadow-sm" 
+            loading="eager" 
+          />
+        </div>
+
+        {/* Middle Column - Icon Navigation */}
+        <div className="hidden lg:flex flex-col gap-6 py-4">
+          <nav className="flex flex-col gap-4">
+            {sections.map((section) => (
+              <button
+                key={section.id}
+                onClick={() => setActiveSection(section.id)}
+                className={`group relative p-3 rounded-full transition-all duration-300 ${
+                  activeSection === section.id 
+                    ? 'bg-foreground text-background shadow-md scale-110' 
+                    : 'bg-transparent text-muted-foreground hover:bg-secondary hover:text-foreground'
+                }`}
+                aria-label={section.label}
+              >
                 <section.icon className="w-5 h-5" />
-                <span className="absolute left-full ml-3 px-3 py-1 bg-foreground text-background text-sm rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                <span className="absolute left-full ml-4 px-2 py-1 bg-foreground text-background text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10">
                   {section.label}
                 </span>
-              </button>)}
+              </button>
+            ))}
           </nav>
         </div>
 
-        {/* Middle Column - Biography & Content */}
-        <div className="relative flex flex-col max-w-[600px] min-h-[320px]">
+        {/* Right Column - Biography & Content */}
+        <div className="relative min-h-[400px] bg-white dark:bg-black border border-transparent dark:border-white/[0.2] rounded-3xl p-8 shadow-input dark:shadow-none">
+          {/* Mobile Navigation (Visible only on small screens) */}
+          <div className="lg:hidden flex gap-4 mb-8 overflow-x-auto pb-2 scrollbar-hide">
+            {sections.map((section) => (
+              <button
+                key={section.id}
+                onClick={() => setActiveSection(section.id)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm whitespace-nowrap transition-colors ${
+                  activeSection === section.id
+                    ? 'bg-foreground text-background'
+                    : 'bg-secondary text-secondary-foreground'
+                }`}
+              >
+                <section.icon className="w-4 h-4" />
+                {section.label}
+              </button>
+            ))}
+          </div>
+
           {/* Philosophy Section */}
-          {activeSection === 'philosophy' && <section className="animate-in fade-in duration-300 absolute inset-0">
-              <h2 className="text-base lg:text-lg leading-tight font-serif font-bold text-foreground mb-2">
-                Philosophy
-              </h2>
-              <p className="text-xs lg:text-sm leading-relaxed text-gray-700">
-                {photographer.biography.philosophy}
+          {activeSection === 'philosophy' && (
+            <section className="animate-in fade-in slide-in-from-right-4 duration-500">
+              <h2 className="text-xl font-bold mb-4">Philosophy</h2>
+              <p className="text-muted-foreground leading-relaxed max-w-prose">
+                {photographer.biography.philosophy || "Photography is more than just capturing a moment; it's about telling a story that resonates with the viewer. My approach is grounded in the belief that every subject has a unique narrative waiting to be unfolded."}
               </p>
-            </section>}
+            </section>
+          )}
 
           {/* Background Section */}
-          {activeSection === 'background' && <section className="animate-in fade-in duration-300 absolute inset-0">
-              <h2 className="text-base lg:text-lg leading-tight font-serif font-bold text-foreground mb-2">
-                Background
-              </h2>
-              <p className="text-xs lg:text-sm leading-relaxed text-gray-700">
+          {activeSection === 'background' && (
+            <section className="animate-in fade-in slide-in-from-right-4 duration-500">
+              <h2 className="text-xl font-bold mb-4">Background</h2>
+              <p className="text-muted-foreground leading-relaxed max-w-prose">
                 {photographer.biography.background}
               </p>
-            </section>}
+            </section>
+          )}
 
           {/* Experience Section */}
-          {activeSection === 'experience' && <section className="animate-in fade-in duration-300 absolute inset-0">
-              <h2 className="text-base lg:text-lg leading-tight font-serif font-bold text-foreground mb-2">
-                Experience
-              </h2>
-              <p className="text-xs lg:text-sm leading-relaxed text-gray-700">
+          {activeSection === 'experience' && (
+            <section className="animate-in fade-in slide-in-from-right-4 duration-500">
+              <h2 className="text-xl font-bold mb-4">Experience</h2>
+              <p className="text-muted-foreground leading-relaxed max-w-prose">
                 {photographer.biography.experience}
               </p>
-            </section>}
+            </section>
+          )}
 
           {/* Current Focus Section */}
-          {activeSection === 'current-focus' && <section className="animate-in fade-in duration-300 absolute inset-0">
-              <h2 className="text-base lg:text-lg leading-tight font-serif font-bold text-foreground mb-2">
-                Current Focus
-              </h2>
-              <p className="text-xs lg:text-sm leading-relaxed text-gray-700">
+          {activeSection === 'current-focus' && (
+            <section className="animate-in fade-in slide-in-from-right-4 duration-500">
+              <h2 className="text-xl font-bold mb-4">Current Focus</h2>
+              <p className="text-muted-foreground leading-relaxed max-w-prose">
                 {photographer.biography.currentFocus}
               </p>
-            </section>}
+            </section>
+          )}
 
-          {/* Contact Information Section */}
-          {activeSection === 'contact' && <section className="animate-in fade-in duration-300 absolute inset-0">
-              <h2 className="text-base lg:text-lg leading-tight font-serif font-bold text-foreground mb-2">
-                Get in Touch
-              </h2>
-              <div className="space-y-2">
-                <div className="flex items-center gap-3">
-                  <Mail className="w-4 h-4 text-gray-500 flex-shrink-0" />
-                  <a href={`mailto:${photographer.contact.email}`} className="text-xs lg:text-sm leading-snug text-gray-700 hover:text-foreground transition-colors">
+          {/* Contact Section */}
+          {activeSection === 'contact' && (
+            <section className="animate-in fade-in slide-in-from-right-4 duration-500">
+              <h2 className="text-xl font-bold mb-4">Get in Touch</h2>
+              <div className="space-y-4">
+                <p className="text-muted-foreground mb-6">
+                  Available for editorial assignments, commercial projects, and personal commissions.
+                </p>
+                <div className="flex flex-col gap-3">
+                  <a 
+                    href={`mailto:${photographer.contact.email}`} 
+                    className="flex items-center gap-3 text-foreground hover:text-muted-foreground transition-colors w-fit"
+                  >
+                    <div className="p-2 bg-secondary rounded-full">
+                      <Mail className="w-4 h-4" />
+                    </div>
                     {photographer.contact.email}
                   </a>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Phone className="w-4 h-4 text-gray-500 flex-shrink-0" />
-                  <a href={`tel:${photographer.contact.phone}`} className="text-xs lg:text-sm leading-snug text-gray-700 hover:text-foreground transition-colors">
+                  <a 
+                    href={`tel:${photographer.contact.phone}`} 
+                    className="flex items-center gap-3 text-foreground hover:text-muted-foreground transition-colors w-fit"
+                  >
+                    <div className="p-2 bg-secondary rounded-full">
+                      <Phone className="w-4 h-4" />
+                    </div>
                     {photographer.contact.phone}
                   </a>
                 </div>
               </div>
-              <p className="mt-3 text-xs leading-relaxed text-gray-500">
-                Available for editorial assignments, commercial projects, and personal commissions.
-              </p>
-            </section>}
-        </div>
-
-        {/* Right Column - Professional Portrait */}
-        <div className="lg:self-center">
-          <img src={photographer.portraitImage.src} alt={photographer.portraitImage.alt} className="w-full aspect-square object-cover rounded-sm shadow-sm max-w-[280px] lg:max-w-[260px] mx-auto" loading="eager" />
+            </section>
+          )}
         </div>
       </div>
-    </div>;
+    </div>
+  );
 }

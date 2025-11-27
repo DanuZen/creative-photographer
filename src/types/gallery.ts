@@ -1,35 +1,37 @@
-export interface GalleryImage {
+export interface ProjectImage {
   id: string;
   src: string;
   srcSet?: string;
   alt: string;
   aspectRatio: number;
   caption: {
-    subject: string;
-    profession: string;
+    title: string;
+    description: string;
   };
   metadata: {
     title: string;
     year: string;
     description?: string;
-    location?: string;
-    camera?: string;
-    series: string;
+    techStack?: string[]; // Replaces camera/location
+    role?: string;
+    series: string; // Keep for compatibility or rename to category
   };
   projectUrl?: string;
+  repoUrl?: string; // New field for GitHub repo
 }
 
-export interface PortfolioSeries {
+export interface Project {
   id: string;
   title: string;
   slug: string;
   description: string;
-  images: GalleryImage[];
+  images: ProjectImage[];
   featured: boolean;
+  techStack?: string[];
 }
 
 export interface FilmstripGalleryProps {
-  images: GalleryImage[];
+  images: ProjectImage[];
   className?: string;
   autoAdvance?: boolean;
   autoAdvanceInterval?: number;

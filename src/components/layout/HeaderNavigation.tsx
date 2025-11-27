@@ -3,14 +3,16 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, User } from "lucide-react";
 import { usePortfolio } from "@/context/PortfolioContext";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+
 export function HeaderNavigation() {
   const {
     photographer,
-    series
   } = usePortfolio();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   if (!photographer) return null;
+
   const isActive = (path: string) => {
     // For home page
     if (path === "/" && location.pathname === "/") return true;
@@ -18,91 +20,124 @@ export function HeaderNavigation() {
     if (path !== "/" && location.pathname.startsWith(path)) return true;
     return false;
   };
+
   const handleNavClick = () => {
     setIsMenuOpen(false);
   };
-  return <div className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm">
+
+  return (
+    <div className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm">
       <div className="mx-auto px-4 md:px-10 lg:max-w-[1200px] lg:px-0 pt-6 sm:pt-8 lg:pt-10 pb-4">
         {/* Top Row: Name + Contact Info */}
         <div className="flex items-end justify-between mb-2">
-        <div className="flex justify-between md:justify-start w-full md:w-fit md:flex-col gap-4">
-          {/* Title */}
-          <Link to="/" className="flex-shrink-0">
-            <h1 className="font-sans text-2xl sm:text-[2.1rem] lg:text-[2.4rem] leading-tight font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity">
-              {photographer.name}
-            </h1>
-          </Link>
+          <div className="flex justify-between md:justify-start w-full md:w-fit md:flex-col gap-4">
+            {/* Title */}
+            <Link to="/" className="flex-shrink-0">
+              <h1 className="font-sans text-2xl sm:text-[2.1rem] lg:text-[2.4rem] leading-tight font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity">
+                {photographer.name}
+              </h1>
+            </Link>
 
-          {/* Mobile: Hamburger Menu */}
-          <div className="sm:hidden">
-            <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-              <SheetTrigger asChild>
-                <button className="p-2 -m-2 hover:opacity-70 transition-opacity" aria-label="Open navigation menu" aria-expanded={isMenuOpen}>
-                  <Menu className="h-6 w-6" />
-                </button>
-              </SheetTrigger>
-              <SheetContent side="left" className="w-[280px]">
-                <SheetHeader>
-                  <SheetTitle>Menu</SheetTitle>
-                </SheetHeader>
-                <nav className="mt-8">
-                  <ul className="flex flex-col gap-6">
-                    {series.map(s => <li key={s.id}>
-                        <Link to={`/series/${s.slug}`} onClick={handleNavClick} className={`text-lg transition-all duration-200 ${isActive(`/series/${s.slug}`) ? "font-semibold text-foreground" : "font-normal text-muted-foreground hover:text-gray-700"}`}>
-                          {s.title}
+            {/* Mobile: Hamburger Menu */}
+            <div className="sm:hidden">
+              <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+                <SheetTrigger asChild>
+                  <button className="p-2 -m-2 hover:opacity-70 transition-opacity" aria-label="Open navigation menu" aria-expanded={isMenuOpen}>
+                    <Menu className="h-6 w-6" />
+                  </button>
+                </SheetTrigger>
+                <SheetContent side="left" className="w-[280px]">
+                  <SheetHeader>
+                    <SheetTitle>Menu</SheetTitle>
+                  </SheetHeader>
+                  <nav className="mt-8">
+                    <ul className="flex flex-col gap-6">
+                      <li>
+                        <Link 
+                          to="/" 
+                          onClick={handleNavClick} 
+                          className={`text-lg transition-all duration-200 ${isActive("/") ? "font-semibold text-foreground" : "font-normal text-muted-foreground hover:text-gray-700"}`}
+                        >
+                          Home
                         </Link>
-                      </li>)}
-                    <li>
-                      <Link to="/about" onClick={handleNavClick} className={`text-lg transition-all duration-200 ${isActive("/about") ? "font-semibold text-foreground" : "font-normal text-muted-foreground hover:text-gray-700"}`}>
-                        About
-                      </Link>
-                    </li>
+                      </li>
+                      <li>
+                        <Link 
+                          to="/skills" 
+                          onClick={handleNavClick} 
+                          className={`text-lg transition-all duration-200 ${isActive("/skills") ? "font-semibold text-foreground" : "font-normal text-muted-foreground hover:text-gray-700"}`}
+                        >
+                          Skill
+                        </Link>
+                      </li>
+                      <li>
+                        <Link 
+                          to="/about" 
+                          onClick={handleNavClick} 
+                          className={`text-lg transition-all duration-200 ${isActive("/about") ? "font-semibold text-foreground" : "font-normal text-muted-foreground hover:text-gray-700"}`}
+                        >
+                          About
+                        </Link>
+                      </li>
 
-                    {/* Contact info in mobile menu */}
-                    <li className="mt-8 pt-6 border-t">
-                      <div className="flex flex-col gap-3 text-sm text-muted-foreground">
-                        <a href={`mailto:${photographer.contact.email}`} className="hover:text-foreground transition-colors">
-                          e: {photographer.contact.email}
-                        </a>
-                        <a href={`tel:${photographer.contact.phone}`} className="hover:text-foreground transition-colors">
-                          m: {photographer.contact.phone}
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                </nav>
-              </SheetContent>
-            </Sheet>
-          </div>
+                      {/* Contact info in mobile menu */}
+                      <li className="mt-8 pt-6 border-t">
+                        <div className="flex flex-col gap-3 text-sm text-muted-foreground">
+                          <a href={`mailto:${photographer.contact.email}`} className="hover:text-foreground transition-colors">
+                            e: {photographer.contact.email}
+                          </a>
+                          <a href={`tel:${photographer.contact.phone}`} className="hover:text-foreground transition-colors">
+                            m: {photographer.contact.phone}
+                          </a>
+                        </div>
+                      </li>
+                    </ul>
+                  </nav>
+                </SheetContent>
+              </Sheet>
+            </div>
 
-          {/* Tablet/Desktop: Horizontal Navigation */}
-          <nav className="hidden sm:block">
-            <ul className="flex flex-row flex-wrap gap-4 sm:gap-5 lg:gap-6">
-              {series.map(s => <li key={s.id}>
-                  <Link to={`/series/${s.slug}`} className={`text-sm sm:text-base lg:text-[1.0625rem] leading-[1.375rem] transition-all duration-200 ${isActive(`/series/${s.slug}`) ? "font-semibold text-foreground" : "font-normal text-muted-foreground hover:text-gray-700"}`}>
-                    {s.title}
+            {/* Tablet/Desktop: Horizontal Navigation */}
+            <nav className="hidden sm:block">
+              <ul className="flex flex-row flex-wrap gap-4 sm:gap-5 lg:gap-6">
+                <li>
+                  <Link 
+                    to="/" 
+                    className={`text-sm sm:text-base lg:text-[1.0625rem] leading-[1.375rem] transition-all duration-200 ${isActive("/") ? "font-semibold text-foreground" : "font-normal text-muted-foreground hover:text-gray-700"}`}
+                  >
+                    Home
                   </Link>
-                </li>)}
-              <li>
-                <Link to="/about" className={`text-sm sm:text-base lg:text-[1.0625rem] leading-[1.375rem] transition-all duration-200 ${isActive("/about") ? "font-semibold text-foreground" : "font-normal text-muted-foreground hover:text-gray-700"}`}>
-                  About
-                </Link>
-              </li>
-            </ul>
-          </nav>
+                </li>
+                <li>
+                  <Link 
+                    to="/skills" 
+                    className={`text-sm sm:text-base lg:text-[1.0625rem] leading-[1.375rem] transition-all duration-200 ${isActive("/skills") ? "font-semibold text-foreground" : "font-normal text-muted-foreground hover:text-gray-700"}`}
+                  >
+                    Skill
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/about" 
+                    className={`text-sm sm:text-base lg:text-[1.0625rem] leading-[1.375rem] transition-all duration-200 ${isActive("/about") ? "font-semibold text-foreground" : "font-normal text-muted-foreground hover:text-gray-700"}`}
+                  >
+                    About
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          
+          {/* User Icon - Right Side */}
+          <Link 
+            to="/login" 
+            className="p-2 hover:bg-secondary rounded-full transition-colors self-center"
+            aria-label="Login"
+          >
+            <User className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors" />
+          </Link>
         </div>
-        
-        {/* User Icon - Right Side */}
-        <Link 
-          to="/login" 
-          className="p-2 hover:bg-secondary rounded-full transition-colors self-center"
-          aria-label="Login"
-        >
-          <User className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors" />
-        </Link>
       </div>
-
-      {/* Bottom Row: Navigation */}
-      </div>
-    </div>;
+    </div>
+  );
 }

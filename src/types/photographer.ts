@@ -1,5 +1,5 @@
 export interface BiographyContent {
-  philosophy: string;
+  philosophy: string; // Can be "Approach" or "Methodology"
   background: string;
   experience: string;
   currentFocus: string;
@@ -8,19 +8,21 @@ export interface BiographyContent {
 export interface ContactInfo {
   email: string;
   phone: string;
+  github?: string;
+  linkedin?: string;
 }
 
-export interface ClientCategory {
+export interface SkillCategory {
   category: string;
-  clients: string[];
+  items: string[];
 }
 
-export interface PhotographerProfile {
+export interface UserProfile {
   name: string;
   tagline: string;
   biography: BiographyContent;
   contact: ContactInfo;
-  clients: ClientCategory[];
+  skills: SkillCategory[];
   portraitImage: {
     src: string;
     alt: string;
