@@ -29,13 +29,13 @@ export function AboutPageLayout({
     label: 'Contact',
     icon: MessageCircle
   }];
-  return <div className="py-8 sm:py-12 min-h-screen">
-      <div className="mx-auto max-w-[1200px] px-4">
+  return <div className="h-screen flex items-center">
+      <div className="mx-auto max-w-[1200px] px-4 w-full">
         {/* Three-Column Grid: Icon Nav, Content, Portrait */}
-        <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] gap-6 sm:gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] gap-4 lg:gap-8">
           {/* Icon Navigation - Static Left Column */}
           <div className="hidden lg:block">
-            <nav className="flex flex-col gap-6">
+            <nav className="flex flex-col gap-4">
               {sections.map(section => <button key={section.id} onClick={() => setActiveSection(section.id)} className={`group relative p-2 rounded-lg transition-all ${activeSection === section.id ? 'bg-accent text-white' : 'bg-secondary text-muted-foreground hover:bg-accent/20 hover:text-accent'}`} aria-label={section.label}>
                   <section.icon className="w-5 h-5" />
                   <span className="absolute left-full ml-3 px-3 py-1 bg-foreground text-background text-sm rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
@@ -46,67 +46,67 @@ export function AboutPageLayout({
           </div>
 
           {/* Middle Column - Biography & Content */}
-          <div className="flex flex-col max-w-[700px] min-h-[600px]">
+          <div className="flex flex-col max-w-[700px]">
             {/* Philosophy Section */}
             {activeSection === 'philosophy' && <section className="animate-in fade-in duration-300">
-                <h2 className="text-lg sm:text-xl lg:text-[1.75rem] leading-tight font-serif font-bold text-foreground mb-4 sm:mb-6">
+                <h2 className="text-lg lg:text-xl leading-tight font-serif font-bold text-foreground mb-3">
                   Philosophy
                 </h2>
-                <p className="text-sm sm:text-base lg:text-[1.0625rem] leading-relaxed text-gray-700">
+                <p className="text-sm lg:text-base leading-relaxed text-gray-700">
                   {photographer.biography.philosophy}
                 </p>
               </section>}
 
             {/* Background Section */}
             {activeSection === 'background' && <section className="animate-in fade-in duration-300">
-                <h2 className="text-lg sm:text-xl lg:text-[1.75rem] leading-tight font-serif font-bold text-foreground mb-4 sm:mb-6">
+                <h2 className="text-lg lg:text-xl leading-tight font-serif font-bold text-foreground mb-3">
                   Background
                 </h2>
-                <p className="text-sm sm:text-base lg:text-[1.0625rem] leading-relaxed text-gray-700">
+                <p className="text-sm lg:text-base leading-relaxed text-gray-700">
                   {photographer.biography.background}
                 </p>
               </section>}
 
             {/* Experience Section */}
             {activeSection === 'experience' && <section className="animate-in fade-in duration-300">
-                <h2 className="text-lg sm:text-xl lg:text-[1.75rem] leading-tight font-serif font-bold text-foreground mb-4 sm:mb-6">
+                <h2 className="text-lg lg:text-xl leading-tight font-serif font-bold text-foreground mb-3">
                   Experience
                 </h2>
-                <p className="text-sm sm:text-base lg:text-[1.0625rem] leading-relaxed text-gray-700">
+                <p className="text-sm lg:text-base leading-relaxed text-gray-700">
                   {photographer.biography.experience}
                 </p>
               </section>}
 
             {/* Current Focus Section */}
             {activeSection === 'current-focus' && <section className="animate-in fade-in duration-300">
-                <h2 className="text-lg sm:text-xl lg:text-[1.75rem] leading-tight font-serif font-bold text-foreground mb-4 sm:mb-6">
+                <h2 className="text-lg lg:text-xl leading-tight font-serif font-bold text-foreground mb-3">
                   Current Focus
                 </h2>
-                <p className="text-sm sm:text-base lg:text-[1.0625rem] leading-relaxed text-gray-700">
+                <p className="text-sm lg:text-base leading-relaxed text-gray-700">
                   {photographer.biography.currentFocus}
                 </p>
               </section>}
 
             {/* Contact Information Section */}
             {activeSection === 'contact' && <section className="animate-in fade-in duration-300">
-                <h2 className="text-lg sm:text-xl lg:text-[1.75rem] leading-tight font-serif font-bold text-foreground mb-4 sm:mb-6">
+                <h2 className="text-lg lg:text-xl leading-tight font-serif font-bold text-foreground mb-3">
                   Get in Touch
                 </h2>
-                <div className="space-y-3 sm:space-y-4">
+                <div className="space-y-3">
                   <div className="flex items-center gap-3">
-                    <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 flex-shrink-0" />
-                    <a href={`mailto:${photographer.contact.email}`} className="text-sm sm:text-base lg:text-[1.0625rem] leading-snug text-gray-700 hover:text-foreground transition-colors">
+                    <Mail className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                    <a href={`mailto:${photographer.contact.email}`} className="text-sm lg:text-base leading-snug text-gray-700 hover:text-foreground transition-colors">
                       {photographer.contact.email}
                     </a>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 flex-shrink-0" />
-                    <a href={`tel:${photographer.contact.phone}`} className="text-sm sm:text-base lg:text-[1.0625rem] leading-snug text-gray-700 hover:text-foreground transition-colors">
+                    <Phone className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                    <a href={`tel:${photographer.contact.phone}`} className="text-sm lg:text-base leading-snug text-gray-700 hover:text-foreground transition-colors">
                       {photographer.contact.phone}
                     </a>
                   </div>
                 </div>
-                <p className="mt-4 sm:mt-6 text-xs sm:text-sm lg:text-[0.9375rem] leading-relaxed text-gray-500">
+                <p className="mt-4 text-xs lg:text-sm leading-relaxed text-gray-500">
                   Available for editorial assignments, commercial projects, and personal commissions.
                 </p>
               </section>}
@@ -114,7 +114,7 @@ export function AboutPageLayout({
 
           {/* Right Column - Professional Portrait */}
           <div className="lg:self-start">
-            <img src={photographer.portraitImage.src} alt={photographer.portraitImage.alt} className="w-full aspect-square object-cover rounded-sm shadow-sm max-w-[400px] mx-auto" loading="eager" />
+            <img src={photographer.portraitImage.src} alt={photographer.portraitImage.alt} className="w-full aspect-square object-cover rounded-sm shadow-sm max-w-[320px] lg:max-w-[300px] mx-auto" loading="eager" />
           </div>
         </div>
       </div>
