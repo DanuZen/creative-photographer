@@ -21,9 +21,10 @@ export function HeaderNavigation() {
   const handleNavClick = () => {
     setIsMenuOpen(false);
   };
-  return <div className="relative w-full">
-      {/* Top Row: Name + Contact Info */}
-      <div className="flex items-end justify-between mb-2">
+  return <div className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm">
+      <div className="container mx-auto px-4 sm:px-8 lg:px-12 pt-6 sm:pt-8 lg:pt-10 pb-4">
+        {/* Top Row: Name + Contact Info */}
+        <div className="flex items-end justify-between mb-2">
         <div className="flex justify-between md:justify-start w-full md:w-fit md:flex-col gap-4">
           {/* Title */}
           <Link to="/" className="flex-shrink-0">
@@ -102,5 +103,6 @@ export function HeaderNavigation() {
       </div>
 
       {/* Bottom Row: Navigation */}
+      </div>
     </div>;
 }
